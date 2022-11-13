@@ -29,16 +29,7 @@ public class UserService {
     }
 
     public void editUser(User user, String id) {
-        userList.stream().filter(a -> a.getId() == user.getId()).
-        findAny().ifPresent(a -> {
-            a.setName("zzzzzzzzzz");
-            a.setEmail("zzzzzzzzzzzzz");
-        });
-        // userList.stream().filter(a -> a.getId() == id).
-        // findAny().ifPresent(a -> {
-        //     a.setName(user.getName()); 
-        //     a.setEmail(user.getEmail());
-        // });
+        userList.set(userList.indexOf(userList.stream().filter(u -> u.getId().equals(id)).findFirst().get()), user);
     }
 
     public void deleteUser(String id) {
